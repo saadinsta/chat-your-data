@@ -70,7 +70,6 @@ with block:
             lines=1,
         )
         submit = gr.Button(value="Send", variant="secondary")
-        submit)
 
     gr.Examples(
         examples=[
