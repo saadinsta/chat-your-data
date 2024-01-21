@@ -69,7 +69,8 @@ with block:
             placeholder="Ask questions about the most recent state of the union",
             lines=1,
         )
-        submit = gr.Button(value="Send", variant="secondary", css={"width": "auto"})
+        submit = gr.Button(value="Send", variant="secondary")
+        submit.style(css={"width": "auto"})
 
     gr.Examples(
         examples=[
@@ -96,4 +97,4 @@ with block:
         outputs=[agent_state],
     )
 
-gr.Interface(fn=block, live=True).launch(debug=True)
+gr.
