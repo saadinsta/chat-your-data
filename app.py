@@ -70,7 +70,7 @@ with block:
             lines=1,
         )
         submit = gr.Button(value="Send", variant="secondary")
-        submit.style(css={"width": "auto"})
+        submit)
 
     gr.Examples(
         examples=[
