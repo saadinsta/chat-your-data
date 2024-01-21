@@ -53,9 +53,7 @@ block = gr.Blocks(css=".gradio-container {background-color: lightgray}")
 
 with block:
     with gr.Row():
-        gr.Markdown(
-            "<h3><center>Chat-Your-Data (State-of-the-Union)</center></h3>")
-
+        gr.Markdown("<h3><center>Chat-Your-Data (State-of-the-Union)</center></h3>")
         openai_api_key_textbox = gr.Textbox(
             placeholder="Paste your OpenAI API key (sk-...)",
             show_label=False,
@@ -72,7 +70,6 @@ with block:
             lines=1,
         )
         submit = gr.Button(value="Send", variant="secondary").style(full_width=False)
-            full_width=False)
 
     gr.Examples(
         examples=[
@@ -85,17 +82,13 @@ with block:
 
     gr.HTML("Demo application of a LangChain chain.")
 
-    gr.HTML(
-        "<center>Powered by <a href='https://github.com/hwchase17/langchain'>LangChain 🦜️🔗</a></center>"
-    )
+    gr.HTML("<center>Powered by <a href='https://github.com/hwchase17/langchain'>LangChain 🦜️🔗</a></center>")
 
     state = gr.State()
     agent_state = gr.State()
 
-    submit.click(chat, inputs=[openai_api_key_textbox, message,
-                 state, agent_state], outputs=[chatbot, state])
-    message.submit(chat, inputs=[
-                   openai_api_key_textbox, message, state, agent_state], outputs=[chatbot, state])
+    submit.click(chat, inputs=[openai_api_key_textbox, message, state, agent_state], outputs=[chatbot, state])
+    message.submit(chat, inputs=[openai_api_key_textbox, message, state, agent_state], outputs=[chatbot, state])
 
     openai_api_key_textbox.change(
         set_openai_api_key,
@@ -103,4 +96,4 @@ with block:
         outputs=[agent_state],
     )
 
-block.launch(debug=True)
+gr.Interface(fn=block, live=True).launch(debug=True)
